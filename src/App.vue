@@ -41,6 +41,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  height: 100%;
 }
 
 body {
@@ -51,14 +52,5 @@ body {
   margin: 0;
   padding: 0;
   font-size: 10px;
-}
-
-h1 {
-  font-size: 6.4em;
-}
-
-h2 {
-  font-size: 20em;
-  margin: 0;
 }
 </style>

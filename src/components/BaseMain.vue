@@ -10,9 +10,11 @@
       <img class="squat" :src=squat>
       <img class="map-pin" :src=mapPin>
       <img class="pig" :src=pig>
-      <svg id="path"></svg>
-      <div class="plane-box" :style="{ left: planeXPosition, bottom: planeYPosition}">
-        <img class="plane" :src=plane>
+      <img class="path" :src=path>
+      <div class="plane-box" :style="{ left: planeXPosition, bottom: planeYPosition }">
+        <img class="plane" :style="{ transform: `translate(0, -50%) rotate(${planeAngle})`}" :src=plane>
+        <img class="bubble" :src=bubble>
+        <h1 class="bubble-text">{{ ((this.totalAmount / 40000) * 100).toFixed() }}%</h1>
       </div>
     </div>
     <h1 class="last-donater"><span class="green">+{{ lastDonaters[0].amount / 100}}₴</span> від {{ nameFormatter(lastDonaters[0].description) }}, дякуємо! 💚</h1>
@@ -20,11 +22,13 @@
 </template>
 
 <script>
-import * as d3 from 'd3'
+// import * as d3 from 'd3'
 import mapPin from '../assets/icons/map-pin.png'
 import squat from '../assets/icons/squat.png'
 import pig from '../assets/icons/pig.png'
 import plane from '../assets/icons/plane.png'
+import path from '../assets/icons/path.png'
+import bubble from '../assets/icons/bubble.png'
 import background from '../assets/video/background.mp4'
 import axios from 'axios';
 import moment from 'moment';
@@ -37,8 +41,10 @@ export default {
       squat,
       pig,
       plane,
+      path,
+      bubble,
       background,
-      totalAmount: 30000,
+      totalAmount: 0,
       lastDonaters: [
         {
           amount: 0,
@@ -49,11 +55,14 @@ export default {
   },
   computed: {
     planeXPosition() {
-      return (this.totalAmount / 40000 * 2000) + 'px';
+      return (this.totalAmount / 40000) * 100 + '%';
     },
     planeYPosition() {
-      return (Math.cos((this.totalAmount / 40000) + 1.57)) * 510 / 2 + 'px';
-    }
+      return (-Math.sin((this.totalAmount / 40000) * 6.28)) * 50 + '%';
+    },
+    planeAngle() {
+      return Math.cos((this.totalAmount / 40000) * 6.28) + 0.7 + 'rad';
+    },
   },
   methods: {
     numberWithCommas(x) {
@@ -87,61 +96,77 @@ export default {
     }
   },
   mounted() {
-    console.log(Math.cos((this.totalAmount / 40000) + 1.57));
-  this.getDonaters(); 
-  setInterval(() => this.getDonaters(), 61000);
-  const width = 2000;
-  const height = 510;
+  // this.getDonaters(); 
+  // setInterval(() => this.getDonaters(), 61000);
+  setInterval(() => {
+    if (this.totalAmount < 40000) {
+      this.totalAmount += 100, 1
+      console.log(this.totalAmount / 40000, -Math.sin((this.totalAmount / 40000) * 6.28), this.planeAngle);
+    } else {
+      this.totalAmount = 0;
+    }
+  }, 10);
 
-  const svg = d3.select('svg')
-    .attr("width", width)
-    .attr("height", height);
+  // const width = 2000;
+  // const height = 510;
 
-  const curve = d3.line().curve(d3.curveNatural);
-  const points = [[0, 255], [500, 505], [1000, 255], [1500, 5], [2000, 255]];
+  // const svg = d3.select('svg')
+  //   .attr("width", width)
+  //   .attr("height", height);
+
+  // const curve = d3.line().curve(d3.curveNatural);
+  // const points = [[0, 255], [500, 505], [1000, 255], [1500, 5], [2000, 255]];
   
-  var defs = svg.append('defs');
+  // var defs = svg.append('defs');
 
-  var gradient = defs.append('linearGradient')
-    .attr('id', 'svgGradient')
-    .attr('x1', '0%')
-    .attr('x2', '100%')
+  // var gradient = defs.append('linearGradient')
+  //   .attr('id', 'svgGradient')
+  //   .attr('x1', '0%')
+  //   .attr('x2', '100%')
 
-    gradient.append('stop')
-    .attr('class', 'start')
-    .attr('offset', '0%')
-    .attr('stop-color', 'white')
-    .attr('stop-opacity', 1);
+  //   gradient.append('stop')
+  //   .attr('class', 'start')
+  //   .attr('offset', '0%')
+  //   .attr('stop-color', 'white')
+  //   .attr('stop-opacity', 1);
 
-    gradient.append('stop')
-    .attr('class', 'end')
-    .attr('offset', '100%')
-    .attr('stop-color', 'red')
-    .attr('stop-opacity', 1);
+  //   gradient.append('stop')
+  //   .attr('class', 'end')
+  //   .attr('offset', '100%')
+  //   .attr('stop-color', 'red')
+  //   .attr('stop-opacity', 1);
 
     
-  svg
-    .append('path')
-    .attr('d', curve(points))
-    .attr("stroke-width", 10)
-    .style("stroke-dasharray", ("40, 20"))
-    .attr('stroke', 'url(#svgGradient)')
-    .attr('fill', 'none');
+  // svg
+  //   .append('path')
+  //   .attr('d', curve(points))
+  //   .attr("stroke-width", 10)
+  //   .style("stroke-dasharray", ("40, 20"))
+  //   .attr('stroke', 'url(#svgGradient)')
+  //   .attr('fill', 'none');
   }
 }
 </script>
 
 <style lang="sass" scoped>
 .main
+  // position: relative
+  container-type: inline-size
   align-items: center
   text-align: center
-  height: 100vh
-  padding: 80px
+  height: calc(100% - 8cqw)
+  padding: 4cqw
 
 .title
+  font-size: 3cqw
   margin-bottom: 0.7em
   font-weight: 700
   margin: auto
+
+.amount
+  font-size: 9cqw
+  margin: 1cqw 0
+  font-weight: 700
 
 .green
   color: #4DCF33
@@ -150,49 +175,81 @@ export default {
   color: #F00
 
 .subtitle
+  font-size: 3cqw
   font-weight: 300
+  margin-bottom: 7cqw
+
+.last-donater
+  font-size: 3cqw
+  font-weight: 300
+  margin-top: 1cqw
+  position: fixed
+  bottom: 0
+  left: 50%
+  transform: translateX(-50%)
+  width: 100%
 
 .flight
-  width: 2000px
-  height: 510px
+  width: 85%
   position: relative
-  margin: 20em auto
+  margin: 4cqw auto
 
 .map-pin
   position: absolute
-  top: 130px
+  top: 30%
   left: 0
-  transform: translateX(-50%)
+  transform: translate(-50%, -50%)
+  width: 5cqw
 
 .squat
   position: absolute
-  top: -160px
+  top: -10%
   left: 0
-  transform: translateX(-50%)
+  transform: translate(-50%, -50%)
+  width: 8cqw
 
 .pig
   position: absolute
-  top: -100px
-  right: 0
-  transform: translateX(50%)
+  top: 44%
+  right: -48%
+  transform: translate(-50%, -50%)
+  width: 40cqw
+  z-index: -1
 
-#path
-  z-index: 2
+.bubble
   position: absolute
-  top: 0px
-  left: 0
+  top: -80%
+  left: -0%
+  transform: translate(-50%, -50%)
+  width: 7cqw
+  z-index: 2
+
+.bubble-text
+  position: absolute
+  top: -100%
+  left: -0%
+  transform: translate(-50%, -50%)
+  z-index: 2
+  font-size: 2.5cqw
+
+.path
+  z-index: 3
+  width: 100%
 
 .plane-box
   position: absolute
   transform: translate(-50%, 0)
   z-index: 4
+  width: 10cqw
 
+.plane
+  width: 100%
+  
 .background
-  position: fixed
-  top: 0
-  left: 0
-  // width: auto
-  height: 100%
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
   z-index: -1
   opacity: 0.8
 </style>
