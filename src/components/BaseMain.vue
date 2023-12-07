@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <video autoplay muted loop playsinline class="background">
+    <video autoplay muted loop playsinline poster="../assets/icons/map-pin.png" class="background">
       <source src="../assets/video/background.mp4" type="video/mp4">
     </video>
     <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #6</h1>
