@@ -97,15 +97,15 @@ export default {
     }
   },
   mounted() {
-  // this.getDonaters(); 
-  // setInterval(() => this.getDonaters(), 61000);
-  setInterval(() => {
-    if (this.totalAmount < 40000) {
-      this.totalAmount += 100, 1
-    } else {
-      this.totalAmount = 0;
-    }
-  }, 1000);
+  this.getDonaters(); 
+  setInterval(() => this.getDonaters(), 61000);
+  // setInterval(() => {
+  //   if (this.totalAmount < 40000) {
+  //     this.totalAmount += 100, 1
+  //   } else {
+  //     this.totalAmount = 0;
+  //   }
+  // }, 1000);
   // const width = 2000;
   // const height = 510;
 
