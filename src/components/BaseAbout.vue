@@ -13,6 +13,7 @@
       </button>
       <button class="white" >
         <a href="https://send.monobank.ua/jar/8ev54TuhtG" target="_blank">
+        <img class="jar" :src=jar>
           Заправити літачок
         </a>
         </button>
@@ -24,6 +25,7 @@
 import squat from '../assets/icons/squat.png'
 import plane from '../assets/icons/plane_2.svg'
 import telegram from '../assets/icons/telegram.png'
+import jar from '../assets/icons/jar.png'
 
 export default {
   name: 'BaseMain',
@@ -31,7 +33,8 @@ export default {
     return {
       squat,
       plane,
-      telegram
+      telegram,
+      jar
     }
   },
   methods: {
@@ -83,11 +86,14 @@ button
   font-size: 16px
   font-weight: 700
   width: 80%
+  margin-top: 25px
 
 button.white
-  background-color: white
   color: black
-  margin-top: 16px
+  border-radius: 44px
+  background: #F2F4F5
+  margin-top: 30px
+  font-size: 20px
 
 .button-block
   position: fixed
@@ -102,11 +108,17 @@ button.white
 a
   text-decoration: none
   color: inherit
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 10px
 
 .bonus
-  background: linear-gradient(90deg, #6DFCD1 0%, #006CD0 100%)
+  background: linear-gradient(180deg, #6DFCD1 0%, #006CD0 100%)
   padding: 8px 16px
   border-radius: 8px
   font-size: 12px
-  margin-top: 16px
+
+.jar
+  width: 38px
 </style>
