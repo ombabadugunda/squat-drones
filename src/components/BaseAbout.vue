@@ -6,6 +6,7 @@
     <img class="plane" :src=plane>
     <!-- <p class="subtitle">Зібрано: 16 380 / 40 000</p> -->
     <div class="button-block">
+      
       <button>
         <img class="telegram" :src=telegram>
         Звітність
