@@ -245,6 +245,7 @@ export default {
   width: 100%
   
 .background
+  display: block
   position: absolute
   left: 50%
   top: 50%
