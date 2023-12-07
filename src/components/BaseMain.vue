@@ -211,7 +211,7 @@ export default {
   top: 44%
   right: -48%
   transform: translate(-50%, -50%)
-  width: 40cqw
+  width: 40vw
   z-index: -1
 
 .bubble
