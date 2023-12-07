@@ -4,9 +4,9 @@
     <p class="subtitle">Сквот 17б збирає</p>
     <h1 class="title">На третій дрон-камікадзе</h1>
     <img class="plane" :src=plane>
-    <!-- <p class="subtitle">Зібрано: 16 380 / 40 000</p> -->
+    <p class="subtitle">Здатний нести до 3кг вибухівки на 40км</p>
     <div class="button-block">
-      
+
       <button>
         <img class="telegram" :src=telegram>
         Звітність
@@ -45,7 +45,6 @@ export default {
 <style lang="sass" scoped>
 .about
   // position: relative
-  container-type: inline-size
   align-items: center
   text-align: center
   height: calc(100% - 128px)
