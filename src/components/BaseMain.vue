@@ -251,4 +251,5 @@ export default {
   transform: translate(-50%, -50%)
   z-index: -1
   opacity: 0.8
+  height: 100%
 </style>
