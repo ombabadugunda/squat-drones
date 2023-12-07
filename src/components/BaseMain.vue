@@ -1,7 +1,7 @@
 <template>
   <div class="main">
-    <video muted loop playsinline poster="../assets/icons/map-pin.png" class="background" onclick="this.play()">
-      <source loop="true" src="../assets/video/background.mp4" type="video/mp4">
+    <video ref="videoPlayer" muted loop playsinline class="background">
+      <!-- <source loop="true" src="../assets/video/background.mp4" type="video/mp4"> -->
     </video>
     <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #6</h1>
     <h2 class="amount"><span class="green">{{ numberWithCommas(totalAmount) }}₴</span> / <span class="red">{{ numberWithCommas(40000) }}₴</span></h2>
@@ -32,11 +32,24 @@ import bubble from '../assets/icons/bubble.png'
 import background from '../assets/video/background.mp4'
 import axios from 'axios';
 import moment from 'moment';
+import videojs from 'video.js';
 
 export default {
   name: 'BaseMain',
   data() {
     return {
+      options: {
+        autoplay: true,
+        controls: true,
+        sources: [
+          {
+            src:
+              background,
+              type: 'video/mp4'
+          }
+        ]
+      },
+      player: null,
       mapPin,
       squat,
       pig,
@@ -96,6 +109,9 @@ export default {
     }
   },
   mounted() {
+    this.player = videojs(this.$refs.videoPlayer, this.options, () => {
+      this.player.log('onPlayerReady', this);
+    });
   // this.getDonaters(); 
   // setInterval(() => this.getDonaters(), 61000);
   setInterval(() => {
