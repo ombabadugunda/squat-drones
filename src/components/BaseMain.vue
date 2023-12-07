@@ -211,7 +211,7 @@ export default {
   position: absolute
   top: 44%
   right: -48%
-  transform: translate(-50%, -50%)
+  transform: translate(-35%, -50%)
   width: 40vw
   z-index: -1
 
