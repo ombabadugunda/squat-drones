@@ -6,7 +6,7 @@
     <img class="plane" :src=plane>
     <p class="subtitle">Здатний нести до 3кг вибухівки на 40км</p>
     <div class="button-block">
-
+      <div class="bonus">За донат від 200₴ подарунок на барі</div>
       <button>
         <img class="telegram" :src=telegram>
         Звітність
@@ -103,4 +103,10 @@ a
   text-decoration: none
   color: inherit
 
+.bonus
+  background: linear-gradient(90deg, #6DFCD1 0%, #006CD0 100%)
+  padding: 8px 16px
+  border-radius: 8px
+  font-size: 12px
+  margin-top: 16px
 </style>
