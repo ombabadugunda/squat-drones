@@ -152,7 +152,7 @@ export default {
   text-align: center
   height: calc(100% - 8vw)
   padding: 4vw
-  width: 100%
+  width: calc(100% - 8vw)
   margin: 0 auto 
 
 .title
@@ -212,8 +212,8 @@ export default {
 .pig
   position: absolute
   top: 44%
-  right: -48%
-  transform: translate(-35%, -50%)
+  right: -50%
+  transform: translate(-50%, -50%)
   width: 40vw
   z-index: -1
 
