@@ -168,11 +168,14 @@ export default {
   font-weight: 700
 
 .green
-  color: #4DCF33
+  background: -webkit-linear-gradient(#6DFFA8, #55C200)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
 
 .red
-  color: #F00
-
+  background: -webkit-linear-gradient(#EE0000, #FFE500)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
 .subtitle
   font-size: 3vw
   font-weight: 300
