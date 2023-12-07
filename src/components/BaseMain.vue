@@ -248,7 +248,7 @@ export default {
 .background
   background-size: cover
   background: url("../assets/video/background.gif")
-  position: absolute
+  position: fixed
   left: 50%
   top: 50%
   transform: translate(-50%, -50%)
