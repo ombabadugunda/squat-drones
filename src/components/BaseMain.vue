@@ -1,8 +1,9 @@
 <template>
   <div class="main">
-    <video autoplay loop muted defaultMuted playsinline poster="../assets/icons/map-pin.png" class="background" onclick="this.play()">
+    <img :src="background" class="background" alt="">
+    <!-- <video autoplay loop muted defaultMuted playsinline poster="../assets/icons/map-pin.png" class="background" onclick="this.play()">
       <source loop="true" src="../assets/video/background.mp4" type="video/mp4">
-    </video>
+    </video> -->
     <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #6</h1>
     <h2 class="amount"><span class="green">{{ numberWithCommas(totalAmount) }}₴</span> / <span class="red">{{ numberWithCommas(40000) }}₴</span></h2>
     <h1 class="subtitle">на літак-камідзе з 3кг вибухівки</h1>
@@ -29,7 +30,7 @@ import pig from '../assets/icons/pig.png'
 import plane from '../assets/icons/plane.png'
 import path from '../assets/icons/path.png'
 import bubble from '../assets/icons/bubble.png'
-import background from '../assets/video/background.mp4'
+import background from '../assets/video/background.gif'
 import axios from 'axios';
 import moment from 'moment';
 
@@ -250,7 +251,7 @@ export default {
   left: 50%
   top: 50%
   transform: translate(-50%, -50%)
-  z-index: 6
+  z-index: -1
   opacity: 0.8
   height: 100%
   width: 100%
