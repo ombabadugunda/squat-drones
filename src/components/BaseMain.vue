@@ -253,4 +253,5 @@ export default {
   z-index: 6
   opacity: 0.8
   height: 100%
+  width: 100%
 </style>
