@@ -246,7 +246,8 @@ export default {
   width: 100%
   
 .background
-  display: block
+  background-size: cover
+  background: url("../assets/video/background.gif")
   position: absolute
   left: 50%
   top: 50%
@@ -255,4 +256,5 @@ export default {
   opacity: 0.8
   height: 100%
   width: 100%
+  fit
 </style>
