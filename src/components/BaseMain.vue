@@ -1,11 +1,8 @@
 <template>
   <div class="main">
     <img :src="background" class="background" alt="">
-    <!-- <video autoplay loop muted defaultMuted playsinline poster="../assets/icons/map-pin.png" class="background" onclick="this.play()">
-      <source loop="true" src="../assets/video/background.mp4" type="video/mp4">
-    </video> -->
-    <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #6</h1>
-    <h2 class="amount"><span class="green">{{ numberWithCommas(totalAmount) }}₴</span> / <span class="red">{{ numberWithCommas(40000) }}₴</span></h2>
+    <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #3</h1>
+    <h2 class="amount"><span class="green">{{ numberWithCommas(totalAmount) }}₴</span> <span class="slash">/</span> <span class="red">{{ numberWithCommas(40000) }}₴</span></h2>
     <h1 class="subtitle">на літак-камідзе з 3кг вибухівки</h1>
     <div class="flight">
       <img class="squat" :src=squat>
@@ -259,5 +256,7 @@ export default {
   opacity: 0.8
   height: 100%
   width: 100%
-  fit
+
+.slash
+  font-weight: 50
 </style>
