@@ -47,7 +47,7 @@ export default {
   container-type: inline-size
   align-items: center
   text-align: center
-  height: calc(100% - 99px)
+  height: calc(100% - 128px)
   padding: 64px 16px 35px
 
 .squat
