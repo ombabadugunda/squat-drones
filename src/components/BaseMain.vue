@@ -41,6 +41,7 @@ export default {
       options: {
         autoplay: true,
         controls: true,
+        playsinline: true,
         sources: [
           {
             src:
