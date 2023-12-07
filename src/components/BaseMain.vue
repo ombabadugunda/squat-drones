@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <video autoplay loop muted playsinline poster="../assets/icons/map-pin.png" class="background" onclick="this.play()">
+    <video autoplay loop muted defaultMuted playsinline poster="../assets/icons/map-pin.png" class="background" onclick="this.play()">
       <source loop="true" src="../assets/video/background.mp4" type="video/mp4">
     </video>
     <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #6</h1>
