@@ -152,6 +152,8 @@ export default {
   text-align: center
   height: calc(100% - 8vw)
   padding: 4vw
+  width: 100%
+  margin: 0 auto 
 
 .title
   font-size: 3vw
