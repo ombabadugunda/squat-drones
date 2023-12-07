@@ -101,12 +101,10 @@ export default {
   setInterval(() => {
     if (this.totalAmount < 40000) {
       this.totalAmount += 100, 1
-      console.log(this.totalAmount / 40000, -Math.sin((this.totalAmount / 40000) * 6.28), this.planeAngle);
     } else {
       this.totalAmount = 0;
     }
-  }, 10);
-
+  }, 1000);
   // const width = 2000;
   // const height = 510;
 
@@ -154,18 +152,18 @@ export default {
   container-type: inline-size
   align-items: center
   text-align: center
-  height: calc(100% - 8cqw)
-  padding: 4cqw
+  height: calc(100% - 8vw)
+  padding: 4vw
 
 .title
-  font-size: 3cqw
+  font-size: 3vw
   margin-bottom: 0.7em
   font-weight: 700
   margin: auto
 
 .amount
-  font-size: 9cqw
-  margin: 1cqw 0
+  font-size: 9vw
+  margin: 1vw 0
   font-weight: 700
 
 .green
@@ -175,14 +173,14 @@ export default {
   color: #F00
 
 .subtitle
-  font-size: 3cqw
+  font-size: 3vw
   font-weight: 300
-  margin-bottom: 7cqw
+  margin-bottom: 7vw
 
 .last-donater
-  font-size: 3cqw
+  font-size: 3vw
   font-weight: 300
-  margin-top: 1cqw
+  margin-top: 1vw
   position: fixed
   bottom: 0
   left: 50%
@@ -192,21 +190,21 @@ export default {
 .flight
   width: 85%
   position: relative
-  margin: 4cqw auto
+  margin: 4vw auto
 
 .map-pin
   position: absolute
   top: 30%
   left: 0
   transform: translate(-50%, -50%)
-  width: 5cqw
+  width: 5vw
 
 .squat
   position: absolute
   top: -10%
   left: 0
   transform: translate(-50%, -50%)
-  width: 8cqw
+  width: 8vw
 
 .pig
   position: absolute
@@ -221,7 +219,7 @@ export default {
   top: -80%
   left: -0%
   transform: translate(-50%, -50%)
-  width: 7cqw
+  width: 7vw
   z-index: 2
 
 .bubble-text
@@ -230,7 +228,7 @@ export default {
   left: -0%
   transform: translate(-50%, -50%)
   z-index: 2
-  font-size: 2.5cqw
+  font-size: 2.5vw
 
 .path
   z-index: 3
@@ -240,7 +238,8 @@ export default {
   position: absolute
   transform: translate(-50%, 0)
   z-index: 4
-  width: 10cqw
+  width: 10vw
+  transition: all 1s ease-in-out
 
 .plane
   width: 100%

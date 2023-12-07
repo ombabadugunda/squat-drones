@@ -1,35 +1,29 @@
 <template>
-  <BaseMain />
+  <router-view/>
 </template>
 
 <script>
-import BaseMain from './components/BaseMain.vue'
-
-
 export default {
-  name: 'App',
-  components: {
-    BaseMain
+  name: 'BaseMain',
+  data() {
+    return {
+      windowHeight: window.innerHeight
+    }
   },
-  
   mounted() {
-    
-    // Personal info request
-
-    // axios.get('https://api.monobank.ua/personal/client-info', { headers })
-    //   .then(response => {
-    //     // Handle the response data
-    //     console.log(response.data);
-    //   })
-    //   .catch(error => {
-    //     // Handle any errors
-    //     console.error('There was an error!', error);
-    //   });
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.onResize);
+    })
+  },
+  methods: {  
+    onResize() {
+      this.windowHeight = window.innerHeight
+    }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 @font-face {
   font-family: "e-Ukraine";
   src: local("e-Ukraine"),
