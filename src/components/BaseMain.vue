@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <video autoplay muted loop class="background">
-      <source src="../assets/video/background.mp4" type="video/mp4">
+      <source src="https://drive.google.com/file/d/1oUD9z8vUjicXCyvWadhsAhlGOQ63J8Sq/view?usp=sharing" type="video/mp4">
     </video>
     <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #6</h1>
     <h2 class="amount"><span class="green">{{ numberWithCommas(totalAmount) }}₴</span> / <span class="red">{{ numberWithCommas(40000) }}₴</span></h2>
@@ -249,7 +249,7 @@ export default {
   left: 50%
   top: 50%
   transform: translate(-50%, -50%)
-  z-index: -1
+  z-index: 2
   opacity: 0.8
   height: 100%
 </style>
