@@ -8,8 +8,10 @@
     <div class="button-block">
       <div class="bonus">За донат від 200₴ подарунок на барі</div>
       <button>
+        <a href="https://t.me/squatdrone" target="_blank">
         <img class="telegram" :src=telegram>
-        Звітність
+          Звітність
+        </a>
       </button>
       <button class="white" >
         <a href="https://send.monobank.ua/jar/8ev54TuhtG" target="_blank">
