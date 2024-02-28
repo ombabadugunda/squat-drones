@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <img :src="background" class="background" alt="">
-    <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #5</h1>
+    <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #6</h1>
     <h2 class="amount"><span class="green">{{ numberWithCommas(totalAmount) }}₴</span> <span class="slash">/</span> <span class="red">{{ numberWithCommas(40000) }}₴</span></h2>
     <h1 class="subtitle">на літак-камідзе з 3кг вибухівки</h1>
     <div class="flight">
@@ -76,7 +76,7 @@ export default {
     },
     getDonaters() {
       const headers = {
-      'X-Token':'uvzL0w91ixz5L8DYoe5Vh3pZPU-Hsb7nTlawUIoG9MG0',
+      'X-Token':'962431:362800532e7de33538a2774de21ddb4d',
       };
       axios.get(`https://api.monobank.ua/personal/statement/ZjxvVAw-q1A_Et3zb3hNEUtxSwEmt7s/${moment().subtract(1, 'months').unix()}/${moment().unix()}`, { headers })
         .then(response => {
