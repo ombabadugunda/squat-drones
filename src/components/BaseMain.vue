@@ -76,7 +76,7 @@ export default {
     },
     getDonaters() {
       const headers = {
-      'X-Token':'962431:362800532e7de33538a2774de21ddb4d',
+      'X-Token':'uvzL0w91ixz5L8DYoe5Vh3pZPU-Hsb7nTlawUIoG9MG0',
       };
       axios.get(`https://api.monobank.ua/personal/statement/ZjxvVAw-q1A_Et3zb3hNEUtxSwEmt7s/${moment().subtract(1, 'months').unix()}/${moment().unix()}`, { headers })
         .then(response => {
