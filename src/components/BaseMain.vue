@@ -1,15 +1,15 @@
 <template>
   <div class="main">
     <img :src="background" class="background" alt="">
-    <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #6</h1>
+    <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #7</h1>
     <h2 class="amount"><span class="green">{{ numberWithCommas(totalAmount) }}₴</span> <span class="slash">/</span> <span class="red">{{ numberWithCommas(40000) }}₴</span></h2>
-    <h1 class="subtitle">на літак-камідзе з 3кг вибухівки</h1>
+    <h1 class="subtitle">на літак-камікадзе з 3кг вибухівки</h1>
     <div class="flight">
       <img class="squat" :src=squat>
       <img class="map-pin" :src=mapPin>
       <img class="pig" :src=pig>
       <img class="path" :src=path>
-      <div class="plane-box" :style="{ left: planeXPosition, bottom: planeYPosition }">
+      <div v-if="currentView=0" class="plane-box" :style="{ left: planeXPosition, bottom: planeYPosition }">
         <img class="plane" :style="{ transform: `translate(0, -50%) rotate(${planeAngle})`}" :src=plane>
         <img class="bubble" :src=bubble>
         <h1 class="bubble-text">{{ ((this.totalAmount / 40000) * 100).toFixed() }}%</h1>
@@ -35,6 +35,7 @@ export default {
   name: 'BaseMain',
   data() {
     return {
+      currentView: 0,
       mapPin,
       squat,
       pig,
@@ -80,11 +81,11 @@ export default {
       };
       axios.get(`https://api.monobank.ua/personal/statement/ZjxvVAw-q1A_Et3zb3hNEUtxSwEmt7s/${moment().subtract(1, 'months').unix()}/${moment().unix()}`, { headers })
         .then(response => {
-          console.log('Timestamp', moment().unix());
-          console.log('Last donater', response.data[0].description.replace('Від: ', ''));
-          console.log('Amount', response.data[0].amount / 100, 'UAH');
-          console.log('Total amount', response.data[0].balance / 100, 'UAH');
-          console.log('Data', response.data);
+          // console.log('Timestamp', moment().unix());
+          // console.log('Last donater', response.data[0].description.replace('Від: ', ''));
+          // console.log('Amount', response.data[0].amount / 100, 'UAH');
+          // console.log('Total amount', response.data[0].balance / 100, 'UAH');
+          // console.log('Data', response.data);
           this.totalAmount = (response.data[0].balance / 100).toFixed(0);
           this.lastDonaters = response.data.slice(0, 3);
         })
