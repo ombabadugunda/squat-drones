@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <img :src="background" class="background" alt="">
-    <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #7</h1>
+    <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #8</h1>
     <h2 class="amount"><span class="green">{{ numberWithCommas(totalAmount) }}₴</span> <span class="slash">/</span> <span class="red">{{ numberWithCommas(40000) }}₴</span></h2>
     <h1 class="subtitle">на літак-камікадзе з 3кг вибухівки</h1>
     <div class="flight">
