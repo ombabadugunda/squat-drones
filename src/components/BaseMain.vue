@@ -1,18 +1,18 @@
 <template>
   <div class="main">
     <img :src="background" class="background" alt="">
-    <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #8</h1>
-    <h2 class="amount"><span class="green">{{ numberWithCommas(totalAmount) }}₴</span> <span class="slash">/</span> <span class="red">{{ numberWithCommas(40000) }}₴</span></h2>
+    <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #17</h1>
+    <h2 class="amount"><span class="green">{{ numberWithCommas(totalAmount) }}₴</span> <span class="slash">/</span> <span class="red">{{ numberWithCommas(totalPrice) }}₴</span></h2>
     <h1 class="subtitle">на літак-камікадзе з 3кг вибухівки</h1>
     <div class="flight">
       <img class="squat" :src=squat>
       <img class="map-pin" :src=mapPin>
       <img class="pig" :src=pig>
       <img class="path" :src=path>
-      <div v-if="currentView=0" class="plane-box" :style="{ left: planeXPosition, bottom: planeYPosition }">
+      <div v-if="currentView == 0" class="plane-box" :style="{ left: planeXPosition, bottom: planeYPosition }">
         <img class="plane" :style="{ transform: `translate(0, -50%) rotate(${planeAngle})`}" :src=plane>
         <img class="bubble" :src=bubble>
-        <h1 class="bubble-text">{{ ((this.totalAmount / 40000) * 100).toFixed() }}%</h1>
+        <h1 class="bubble-text">{{ ((this.totalAmount / this.totalPrice) * 100).toFixed() }}%</h1>
       </div>
     </div>
     <h1 class="last-donater"><span class="green">+{{ lastDonaters[0].amount / 100}}₴</span> від {{ nameFormatter(lastDonaters[0].description) }}, дякуємо! 💚</h1>
@@ -35,6 +35,7 @@ export default {
   name: 'BaseMain',
   data() {
     return {
+      totalPrice: 56403,
       currentView: 0,
       mapPin,
       squat,
@@ -54,13 +55,13 @@ export default {
   },
   computed: {
     planeXPosition() {
-      return (this.totalAmount / 40000) * 100 + '%';
+      return (this.totalAmount / this.totalPrice) * 100 + '%';
     },
     planeYPosition() {
-      return (-Math.sin((this.totalAmount / 40000) * 6.28)) * 50 + '%';
+      return (-Math.sin((this.totalAmount / this.totalPrice) * 6.28)) * 50 + '%';
     },
     planeAngle() {
-      return Math.cos((this.totalAmount / 40000) * 6.28) + 0.7 + 'rad';
+      return Math.cos((this.totalAmount / this.totalPrice) * 6.28) + 0.7 + 'rad';
     },
   },
   methods: {
