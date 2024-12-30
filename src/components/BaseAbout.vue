@@ -2,7 +2,7 @@
   <div class="about">
     <img class="squat" :src=squat>
     <p class="subtitle">Сквот 17б збирає</p>
-    <h1 class="title">На двадцять шостий дрон-камікадзе</h1>
+    <h1 class="title">На двадцять сьомий дрон-камікадзе</h1>
     <img class="plane" :src=plane>
     <p class="subtitle">Здатний нести до 3кг вибухівки на 40км</p>
     <div class="button-block">
