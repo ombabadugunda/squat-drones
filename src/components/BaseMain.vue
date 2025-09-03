@@ -1,6 +1,33 @@
 <template>
   <div class="main">
-    <img :src="background" class="background" alt="">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class="background"
+    >
+      <source src="@/assets/video/background.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="gradient-top"></div>
+    <div class="gradient-bottom"></div>
+    <div class="top">
+      <h1>Постійний збір на <span class="yellow">Сквот-дрони</span></h1>
+      <h3>Для батальйону <span class="yellow">"Щедрик" 411 полку</span> <span class="yellow">"Яструби"</span></h3>
+    </div>
+    <div class="bottom">
+      <img class="logo" :src=sche>
+      <div class="bottom-text">
+        <h1 class="yellow">+{{ lastDonaters[0].amount / 100}} ₴</h1>
+        <h3>від {{ nameFormatter(lastDonaters[0].description) }}, дякуємо! 💚</h3>
+      </div>
+      <!-- <h1 class="last-donater">
+        <p class="green">+{{ lastDonaters[0].amount / 100}}₴</p> від {{ nameFormatter(lastDonaters[0].description) }}, дякуємо! 💚</h1> -->
+
+      <img class="logo" :src=squat>
+    </div>
+    <!-- <img :src="background" class="background" alt="">
     <h1 class="title">ТРИВАЄ ЗБІР НА СКВОТ-ДРОН #29</h1>
     <h2 class="amount"><span class="green">{{ numberWithCommas(totalAmount) }}₴</span> <span class="slash">/</span> <span class="red">{{ numberWithCommas(totalPrice) }}₴</span></h2>
     <h1 class="subtitle">на літак-камікадзе з 3кг вибухівки</h1>
@@ -15,19 +42,20 @@
         <h1 class="bubble-text">{{ ((this.totalAmount / this.totalPrice) * 100).toFixed() }}%</h1>
       </div>
     </div>
-    <h1 class="last-donater"><span class="green">+{{ lastDonaters[0].amount / 100}}₴</span> від {{ nameFormatter(lastDonaters[0].description) }}, дякуємо! 💚</h1>
+    <h1 class="last-donater"><span class="green">+{{ lastDonaters[0].amount / 100}}₴</span> від {{ nameFormatter(lastDonaters[0].description) }}, дякуємо! 💚</h1> -->
   </div>
 </template>
 
 <script>
 // import * as d3 from 'd3'
 import mapPin from '../assets/icons/map-pin.png'
+import sche from '../assets/icons/sche.png'
 import squat from '../assets/icons/squat.png'
 import pig from '../assets/icons/pig.png'
 import plane from '../assets/icons/plane.png'
 import path from '../assets/icons/path.png'
 import bubble from '../assets/icons/bubble.png'
-import background from '../assets/video/background.gif'
+import background from '../assets/video/background.mp4'
 import axios from 'axios';
 import moment from 'moment';
 
@@ -39,6 +67,7 @@ export default {
       currentView: 0,
       mapPin,
       squat,
+      sche,
       pig,
       plane,
       path,
@@ -147,8 +176,20 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+h1
+  font-size: 4vw
+  margin: 0
+  padding: 0
+  font-weight: 400
+
+h3
+  font-size: 2.5vw
+  margin: 0
+  padding: 0
+  font-weight: 300
+
 .main
-  // position: relative
+  position: relative
   container-type: inline-size
   align-items: center
   text-align: center
@@ -157,110 +198,74 @@ export default {
   width: calc(100% - 8vw)
   margin: 0 auto 
 
-.title
-  font-size: 3vw
-  margin-bottom: 0.7em
-  font-weight: 700
-  margin: auto
+.logo
+  height: 100%
 
-.amount
-  font-size: 9vw
-  margin: 1vw 0
-  font-weight: 700
-
-.green
-  background: -webkit-linear-gradient(#6DFFA8, #55C200)
-  -webkit-background-clip: text
-  -webkit-text-fill-color: transparent
-
-.red
-  background: -webkit-linear-gradient(#EE0000, #FFE500)
-  -webkit-background-clip: text
-  -webkit-text-fill-color: transparent
-.subtitle
-  font-size: 3vw
-  font-weight: 300
-  margin-bottom: 7vw
-
-.last-donater
-  font-size: 3vw
-  font-weight: 300
-  margin-top: 1vw
-  position: fixed
-  bottom: 0
+.bottom
+  position: absolute
+  bottom: 2vw
   left: 50%
   transform: translateX(-50%)
-  width: 100%
+  width: 80%
+  height: 20%
+  display: flex
+  justify-content: space-between
+  align-items: center
+  z-index: 10
 
-.flight
-  width: 85%
-  position: relative
-  margin: 4vw auto
+.bottom-text
+  display: flex
+  flex-direction: column
 
-.map-pin
+.yellow
+  color: #FFD700
+
+.top
   position: absolute
-  top: 30%
-  left: 0
-  transform: translate(-50%, -50%)
-  width: 5vw
-
-.squat
-  position: absolute
-  top: -10%
-  left: 0
-  transform: translate(-50%, -50%)
-  width: 8vw
-
-.pig
-  position: absolute
-  top: 44%
-  right: -50%
-  transform: translate(-50%, -50%)
-  width: 40vw
-  z-index: -1
-
-.bubble
-  position: absolute
-  top: -80%
-  left: -0%
-  transform: translate(-50%, -50%)
-  width: 7vw
-  z-index: 2
-
-.bubble-text
-  position: absolute
-  top: -100%
-  left: -0%
-  transform: translate(-50%, -50%)
-  z-index: 2
-  font-size: 2.5vw
-
-.path
-  z-index: 3
-  width: 100%
-
-.plane-box
-  position: absolute
-  transform: translate(-50%, 0)
-  z-index: 4
-  width: 10vw
-  transition: all 1s ease-in-out
+  top: 0vw
+  left: 50%
+  transform: translateX(-50%)
+  width: 80%
+  height: 20%
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  z-index: 10
 
 .plane
   width: 100%
   
 .background
-  background-size: cover
-  background: url("../assets/video/background.gif")
-  position: fixed
+  background-size: cover 
+  position: absolute
   left: 50%
   top: 50%
   transform: translate(-50%, -50%)
-  z-index: -1
-  opacity: 0.8
+  z-index: -10
   height: 100%
-  width: 100%
 
 .slash
   font-weight: 50
+
+.gradient-top
+  position: absolute
+  top: 0px
+  left: 0
+  width: 100%
+  height: 30%
+  background: linear-gradient(to bottom, rgba(0,0,0,1), transparent)
+  pointer-events: none
+  z-index: 0
+
+.gradient-bottom
+  position: absolute
+  bottom: 0px
+  left: 0
+  width: 100%
+  height: 30%
+  background: linear-gradient(to top, rgba(0,0,0,1), transparent)
+  pointer-events: none
+  z-index: 0
+
 </style>

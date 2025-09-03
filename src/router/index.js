@@ -6,11 +6,6 @@ const routes = [
     path: '/',
     name: 'main',
     component: BaseMain
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../components/BaseAbout.vue')
   }
 ]
 
