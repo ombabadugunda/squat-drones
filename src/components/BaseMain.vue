@@ -109,7 +109,7 @@ export default {
       const headers = {
       'X-Token':'uvzL0w91ixz5L8DYoe5Vh3pZPU-Hsb7nTlawUIoG9MG0',
       };
-      axios.get(`https://api.monobank.ua/personal/statement/ZjxvVAw-q1A_Et3zb3hNEUtxSwEmt7s/${moment().subtract(1, 'months').unix()}/${moment().unix()}`, { headers })
+      axios.get(`https://api.monobank.ua/personal/statement/DMVKroaSTVXm7XsbWgRDpUmsw7ta2bA/${moment().subtract(1, 'months').unix()}/${moment().unix()}`, { headers })
         .then(response => {
           // console.log('Timestamp', moment().unix());
           // console.log('Last donater', response.data[0].description.replace('Від: ', ''));
@@ -122,10 +122,28 @@ export default {
         .catch(error => {
           console.error('There was an error!', error);
       });
+    },
+    getClient() {
+      const headers = {
+      'X-Token':'uvzL0w91ixz5L8DYoe5Vh3pZPU-Hsb7nTlawUIoG9MG0',
+      };
+      axios.get(`https://api.monobank.ua/personal/client-info`, { headers })
+        .then(response => {
+          // console.log('Timestamp', moment().unix());
+          // console.log('Last donater', response.data[0].description.replace('Від: ', ''));
+          // console.log('Amount', response.data[0].amount / 100, 'UAH');
+          // console.log('Total amount', response.data[0].balance / 100, 'UAH');
+          // console.log('Data', response.data);
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error('There was an error!', error);
+      });
     }
   },
   mounted() {
   this.getDonaters(); 
+  // this.getClient();
   setInterval(() => this.getDonaters(), 61000);
   // setInterval(() => {
   //   if (this.totalAmount < 40000) {
