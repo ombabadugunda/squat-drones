@@ -21,6 +21,7 @@
       <div class="bottom-text">
         <h1 class="yellow">+{{ lastDonaters[0].amount / 100}} ₴</h1>
         <h3>від {{ nameFormatter(lastDonaters[0].description) }}, дякуємо! 💚</h3>
+        <h3 v-if="showSecret">Ключ від секрету капітана: БУРЕВІСНИК</h3>
       </div>
       <!-- <h1 class="last-donater">
         <p class="green">+{{ lastDonaters[0].amount / 100}}₴</p> від {{ nameFormatter(lastDonaters[0].description) }}, дякуємо! 💚</h1> -->
@@ -63,6 +64,7 @@ export default {
   name: 'BaseMain',
   data() {
     return {
+      showSecret: false,
       totalPrice: 56403,
       currentView: 0,
       mapPin,
@@ -92,6 +94,9 @@ export default {
     planeAngle() {
       return Math.cos((this.totalAmount / this.totalPrice) * 6.28) + 0.7 + 'rad';
     },
+    lastAmount() {
+      return this.lastDonaters[0].amount / 100;
+    }
   },
   methods: {
     numberWithCommas(x) {
@@ -139,6 +144,14 @@ export default {
         .catch(error => {
           console.error('There was an error!', error);
       });
+    }
+  },
+  watch: {
+    lastAmount(newValue) {
+      if (newValue == 33 && !this.showSecret) {
+        this.showSecret = true;
+        setInterval(() => this.showSecret = false, 30000);
+      }
     }
   },
   mounted() {
