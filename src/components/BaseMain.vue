@@ -75,7 +75,9 @@ export default {
       path,
       bubble,
       background,
+      lastDonateId: null,
       totalAmount: 0,
+      lastDonatId: null,
       lastDonaters: [
         {
           amount: 0,
@@ -96,6 +98,9 @@ export default {
     },
     lastAmount() {
       return this.lastDonaters[0].amount / 100;
+    },
+    newDonateId() {
+      return this.lastDonaters[0].id;
     }
   },
   methods: {
@@ -123,6 +128,8 @@ export default {
           // console.log('Data', response.data);
           this.totalAmount = (response.data[0].balance / 100).toFixed(0);
           this.lastDonaters = response.data.slice(0, 3);
+          console.log(response.data);
+          
         })
         .catch(error => {
           console.error('There was an error!', error);
@@ -147,10 +154,11 @@ export default {
     }
   },
   watch: {
-    lastAmount(newValue) {
-      if (newValue == 33 && !this.showSecret) {
-        this.showSecret = true;
-        setInterval(() => this.showSecret = false, 30000);
+    newDonateId(newValue) {
+      console.log('New donate ID', newValue);
+      if (this.lastAmount == 33) {
+        setTimeout(() => this.showSecret = true, 1000);
+        setTimeout(() => this.showSecret = false, 30000);
       }
     }
   },
